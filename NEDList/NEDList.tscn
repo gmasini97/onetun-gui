@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://NEDList/NEDList.gd" type="Script" id=1]
+[ext_resource path="res://NEDList/VBDel.gd" type="Script" id=2]
+
+[node name="NEDList" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Items" type="ItemList" parent="VB"]
+margin_right = 500.0
+margin_bottom = 476.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="HB" type="HBoxContainer" parent="VB"]
+margin_top = 480.0
+margin_right = 500.0
+margin_bottom = 500.0
+
+[node name="New" type="Button" parent="VB/HB"]
+margin_right = 40.0
+margin_bottom = 20.0
+text = "New"
+
+[node name="Edit" type="Button" parent="VB/HB"]
+margin_left = 44.0
+margin_right = 80.0
+margin_bottom = 20.0
+disabled = true
+text = "Edit"
+
+[node name="Duplicate" type="Button" parent="VB/HB"]
+margin_left = 84.0
+margin_right = 157.0
+margin_bottom = 20.0
+disabled = true
+text = "Duplicate"
+
+[node name="Pad" type="Control" parent="VB/HB"]
+margin_left = 161.0
+margin_right = 441.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Delete" type="Button" parent="VB/HB"]
+margin_left = 445.0
+margin_right = 500.0
+margin_bottom = 20.0
+disabled = true
+text = "Delete"
+
+[node name="VBDel" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="C1" type="Control" parent="VBDel"]
+margin_right = 500.0
+margin_bottom = 218.0
+size_flags_vertical = 3
+
+[node name="Text" type="Label" parent="VBDel"]
+margin_top = 222.0
+margin_right = 500.0
+margin_bottom = 236.0
+text = "Are you sure you want to delete ...?"
+align = 1
+
+[node name="Padding" type="Label" parent="VBDel"]
+margin_top = 240.0
+margin_right = 500.0
+margin_bottom = 254.0
+text = " "
+align = 1
+
+[node name="HB" type="HBoxContainer" parent="VBDel"]
+margin_top = 258.0
+margin_right = 500.0
+margin_bottom = 278.0
+
+[node name="C1" type="Control" parent="VBDel/HB"]
+margin_right = 140.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Yes" type="Button" parent="VBDel/HB"]
+margin_left = 144.0
+margin_right = 178.0
+margin_bottom = 20.0
+text = "Yes"
+
+[node name="C2" type="Control" parent="VBDel/HB"]
+margin_left = 182.0
+margin_right = 322.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="No" type="Button" parent="VBDel/HB"]
+margin_left = 326.0
+margin_right = 356.0
+margin_bottom = 20.0
+text = "No"
+
+[node name="C3" type="Control" parent="VBDel/HB"]
+margin_left = 360.0
+margin_right = 500.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="C2" type="Control" parent="VBDel"]
+margin_top = 282.0
+margin_right = 500.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[connection signal="item_activated" from="VB/Items" to="." method="_on_Items_item_activated"]
+[connection signal="item_selected" from="VB/Items" to="." method="_on_Items_item_selected"]
+[connection signal="nothing_selected" from="VB/Items" to="." method="_on_Items_nothing_selected"]
+[connection signal="pressed" from="VB/HB/New" to="." method="_on_New_pressed"]
+[connection signal="pressed" from="VB/HB/Edit" to="." method="_on_Edit_pressed"]
+[connection signal="pressed" from="VB/HB/Duplicate" to="." method="_on_Duplicate_pressed"]
+[connection signal="pressed" from="VB/HB/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="on_no" from="VBDel" to="." method="_on_VBDel_on_no"]
+[connection signal="on_yes" from="VBDel" to="." method="_on_VBDel_on_yes"]
+[connection signal="pressed" from="VBDel/HB/Yes" to="VBDel" method="_on_Yes_pressed"]
+[connection signal="pressed" from="VBDel/HB/No" to="VBDel" method="_on_No_pressed"]

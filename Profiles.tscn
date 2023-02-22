@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://NEDList/NEDList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Profiles.gd" type="Script" id=2]
+[ext_resource path="res://ProfileEdit/ProfileEdit.tscn" type="PackedScene" id=3]
+
+[node name="Profiles" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HB" type="HBoxContainer" parent="VB"]
+margin_right = 500.0
+margin_bottom = 20.0
+
+[node name="L" type="Label" parent="VB/HB"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 17.0
+text = "Profiles"
+
+[node name="C" type="Control" parent="VB/HB"]
+margin_left = 52.0
+margin_right = 432.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Connect" type="Button" parent="VB/HB"]
+margin_left = 436.0
+margin_right = 500.0
+margin_bottom = 20.0
+disabled = true
+text = "Connect"
+
+[node name="NEDList" parent="VB" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 500.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[node name="ProfileEdit" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[connection signal="pressed" from="VB/HB/Connect" to="." method="_on_Connect_pressed"]
+[connection signal="on_delete" from="VB/NEDList" to="." method="_on_NEDList_on_delete"]
+[connection signal="on_duplicate" from="VB/NEDList" to="." method="_on_NEDList_on_duplicate"]
+[connection signal="on_edit" from="VB/NEDList" to="." method="_on_NEDList_on_edit"]
+[connection signal="on_new" from="VB/NEDList" to="." method="_on_NEDList_on_new"]
+[connection signal="on_selected" from="VB/NEDList" to="." method="_on_NEDList_on_selected"]
+[connection signal="on_unselected" from="VB/NEDList" to="." method="_on_NEDList_on_unselected"]
+[connection signal="on_cancel" from="ProfileEdit" to="." method="_on_ProfileEdit_on_cancel"]
+[connection signal="on_save" from="ProfileEdit" to="." method="_on_ProfileEdit_on_save"]
