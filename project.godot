@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "OSData_T",
+"language": "GDScript",
+"path": "res://Classes/OSData_T.gd"
+}, {
 "base": "Object",
 "class": "Profile_T",
 "language": "GDScript",
 "path": "res://Classes/Profile_T.gd"
 } ]
 _global_script_class_icons={
+"OSData_T": "",
 "Profile_T": ""
 }
 
@@ -27,6 +33,7 @@ run/low_processor_mode=true
 [autoload]
 
 Data="*res://Classes/Data_T.gd"
+OSData="*res://Classes/OSData_T.gd"
 
 [display]
 

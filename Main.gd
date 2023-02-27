@@ -37,6 +37,7 @@ func _on_Profiles_on_change(profiles):
 
 func _on_OnetunDownload_request_completed(result, response_code, headers, body):
 	change_interface($P/VB/Unlock)
+	Data.post_download()
 	_check()
 
 func _on_License_on_accept():

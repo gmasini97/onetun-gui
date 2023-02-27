@@ -6,7 +6,7 @@ var _password: String
 const _profiles_path: String = "user://data.dat"
 
 func has_onetun():
-	return File.new().file_exists("user://onetun.exe")
+	return File.new().file_exists(OSData.onetun())
 
 func has_profiles():
 	return File.new().file_exists(_profiles_path)
@@ -58,15 +58,14 @@ func show_folder():
 	var p = ProjectSettings.globalize_path("user://")
 	OS.shell_open(p)
 
+func post_download():
+	for cmd in OSData.post_download():
+		var exe = cmd.exe
+		var params = cmd.params.duplicate
+		params.push_back(OSData.absolute_onetun())
+		OS.execute(exe, params, false, [], false, true)
+
 func onetun_start(p: Profile_T):
-	# "Android", "iOS", "HTML5", "OSX", "Server", "Windows", "UWP", "X11"
-	var exe = ""
-	match OS.get_name():
-		"OSX":
-			pass
-		"X11":
-			pass
-		"Windows", "UWP":
-			exe = ProjectSettings.globalize_path("user://onetun.exe")
+	var exe = OSData.absolute_onetun()
 	var params = p.get_onetun_params()
 	OS.execute(exe, params, false, [], false, true)
