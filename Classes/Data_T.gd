@@ -61,7 +61,7 @@ func show_folder():
 func post_download():
 	for cmd in OSData.post_download():
 		var exe = cmd.exe
-		var params = cmd.params.duplicate
+		var params = cmd.params.duplicate()
 		params.push_back(OSData.absolute_onetun())
 		OS.execute(exe, params, false, [], false, true)
 

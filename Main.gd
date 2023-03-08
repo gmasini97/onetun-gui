@@ -41,7 +41,8 @@ func _on_OnetunDownload_request_completed(result, response_code, headers, body):
 	_check()
 
 func _on_License_on_accept():
-	$OnetunDownload.request('https://github.com/aramperes/onetun/releases/latest/download/onetun.exe')
+	$OnetunDownload.download_file = OSData.onetun()
+	$OnetunDownload.request(OSData.download())
 	change_interface($P/VB/Downloading)
 
 func _on_License_on_cancel():
