@@ -71,4 +71,15 @@ func _on_ProfileEdit_on_cancel():
 
 func _on_Connect_pressed():
 	if _selected > -1:
+		$VB/HB/Connect.disabled = true
 		Data.onetun_start(_profiles[_selected])
+
+func _on_Timer_timeout():
+	var r = Data.onetun_running()
+	$Running.visible = r
+	$VB.visible = not r
+	$VB/HB/Connect.disabled = false
+
+
+func _on_Running_stop():
+	Data.onetun_kill()

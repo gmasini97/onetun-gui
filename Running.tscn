@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Running.gd" type="Script" id=1]
+
+[node name="Running" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="VB" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="C1" type="Control" parent="VB"]
+margin_right = 500.0
+margin_bottom = 227.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VB"]
+margin_top = 231.0
+margin_right = 500.0
+margin_bottom = 245.0
+text = "Onetun is running."
+align = 1
+
+[node name="C2" type="Control" parent="VB"]
+margin_top = 249.0
+margin_right = 500.0
+margin_bottom = 476.0
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VB"]
+margin_top = 480.0
+margin_right = 500.0
+margin_bottom = 500.0
+text = "Stop"
+
+[connection signal="pressed" from="VB/Button" to="." method="_on_Button_pressed"]

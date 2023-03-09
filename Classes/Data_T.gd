@@ -3,6 +3,7 @@ extends Node
 signal on_error(msg)
 
 var _password: String
+var _pid: int = -1
 const _profiles_path: String = "user://data.dat"
 
 func has_onetun():
@@ -65,7 +66,30 @@ func post_download():
 		params.push_back(OSData.absolute_onetun())
 		OS.execute(exe, params, false, [], false, true)
 
+func _runnable(p: Profile_T):
+	var exe = OSData.absolute_onetun()
+	var params = p.get_onetun_params()
+	OS.execute(exe, params, true, [], false, true)
+
 func onetun_start(p: Profile_T):
 	var exe = OSData.absolute_onetun()
 	var params = p.get_onetun_params()
-	OS.execute(exe, params, false, [], false, true)
+	_pid = OS.execute(exe, params, false, [], false, true)
+
+func onetun_running():
+	if _pid >= 0:
+		var r = OS.is_process_running(_pid)
+		if not r:
+			_pid = -1
+		return r
+	return false
+	
+func onetun_kill():
+	if onetun_running():
+		OS.kill(_pid)
+		_pid = -1
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		onetun_kill()
+		get_tree().quit()

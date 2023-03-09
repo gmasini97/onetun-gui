@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	get_tree().set_auto_accept_quit(false)
 	change_interface($P/VB/Unlock)
 	_check()
 

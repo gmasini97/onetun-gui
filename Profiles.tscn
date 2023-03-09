@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://NEDList/NEDList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Profiles.gd" type="Script" id=2]
 [ext_resource path="res://ProfileEdit/ProfileEdit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Running.tscn" type="PackedScene" id=4]
 
 [node name="Profiles" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+
+[node name="Running" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [node name="VB" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -47,6 +51,10 @@ size_flags_vertical = 3
 [node name="ProfileEdit" parent="." instance=ExtResource( 3 )]
 visible = false
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="stop" from="Running" to="." method="_on_Running_stop"]
 [connection signal="pressed" from="VB/HB/Connect" to="." method="_on_Connect_pressed"]
 [connection signal="on_delete" from="VB/NEDList" to="." method="_on_NEDList_on_delete"]
 [connection signal="on_duplicate" from="VB/NEDList" to="." method="_on_NEDList_on_duplicate"]
@@ -56,3 +64,4 @@ visible = false
 [connection signal="on_unselected" from="VB/NEDList" to="." method="_on_NEDList_on_unselected"]
 [connection signal="on_cancel" from="ProfileEdit" to="." method="_on_ProfileEdit_on_cancel"]
 [connection signal="on_save" from="ProfileEdit" to="." method="_on_ProfileEdit_on_save"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
