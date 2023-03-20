@@ -4,6 +4,7 @@ signal on_change(profiles)
 
 var _vb: Control
 var _profile_edit: Control
+var _running: Control
 
 var _profiles: Array
 
@@ -13,6 +14,16 @@ var _selected: int = -1
 func _ready():
 	_vb = $VB
 	_profile_edit = $ProfileEdit
+	_running = $Running
+
+func _set_current_view(ctrl):
+	_vb.visible = _vb == ctrl
+	_profile_edit.visible = _profile_edit == ctrl
+	_running.visible = _running == ctrl
+	if _vb.visible:
+		$Timer.start()
+	else:
+		$Timer.stop()
 
 func set_profiles(profiles):
 	_profiles = profiles
@@ -23,10 +34,6 @@ func refresh_profiles():
 	for i in _profiles:
 		items.push_back(i.title)
 	$VB/NEDList.set_items(items)
-
-func change_to_edit(val):
-	_profile_edit.visible = val
-	_vb.visible = not val
 
 func _on_NEDList_on_delete(index):
 	_profiles.remove(index)
@@ -40,7 +47,7 @@ func _on_NEDList_on_new():
 
 func _on_NEDList_on_edit(index):
 	_profile_edit.set_profile(_profiles[index])
-	change_to_edit(true)
+	_set_current_view(_profile_edit)
 	_editing = index
 
 func _on_NEDList_on_duplicate(index):
@@ -63,11 +70,11 @@ func _on_ProfileEdit_on_save(profile):
 	if _editing > -1:
 		_profiles[_editing] = profile
 		emit_signal("on_change", _profiles)
-	change_to_edit(false)
+	_set_current_view(_vb)
 	refresh_profiles()
 
 func _on_ProfileEdit_on_cancel():
-	change_to_edit(false)
+	_set_current_view(_vb)
 
 func _on_Connect_pressed():
 	if _selected > -1:
@@ -76,8 +83,10 @@ func _on_Connect_pressed():
 
 func _on_Timer_timeout():
 	var r = Data.onetun_running()
-	$Running.visible = r
-	$VB.visible = not r
+	if r:
+		_set_current_view(_running)
+	else:
+		_set_current_view(_vb)
 	$VB/HB/Connect.disabled = false
 
 
