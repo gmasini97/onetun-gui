@@ -20,10 +20,6 @@ func _set_current_view(ctrl):
 	_vb.visible = _vb == ctrl
 	_profile_edit.visible = _profile_edit == ctrl
 	_running.visible = _running == ctrl
-	if _vb.visible:
-		$Timer.start()
-	else:
-		$Timer.stop()
 
 func set_profiles(profiles):
 	_profiles = profiles
@@ -86,7 +82,8 @@ func _on_Timer_timeout():
 	if r:
 		_set_current_view(_running)
 	else:
-		_set_current_view(_vb)
+		if _running.visible:
+			_set_current_view(_vb)
 	$VB/HB/Connect.disabled = false
 
 
