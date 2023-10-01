@@ -3,7 +3,7 @@
 # onetun GUI
 This is a simple GUI for [onetun](https://github.com/aramperes/onetun).
 
-**Currently supports only windows**
+**Currently supports windows and linux**
 
 ## Features
 - Automatic download of [onetun](https://github.com/aramperes/onetun)
@@ -12,4 +12,4 @@ This is a simple GUI for [onetun](https://github.com/aramperes/onetun).
 - Start onetun with selected profile
 
 ## Download
-Download the artifact from [GitHub Actions](https://github.com/gmasini97/onetun-gui/actions/workflows/build.yml)
+Download the latest release: [Releases](https://github.com/gmasini97/onetun-gui/releases/tag/release)
