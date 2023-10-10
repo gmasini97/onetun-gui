@@ -7,3 +7,7 @@ export.cfg
 # Mono-specific ignores
 .mono/
 data_*/
+
+*.x86_64
+*.exe
+*.app
