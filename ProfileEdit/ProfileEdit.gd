@@ -37,6 +37,7 @@ func _on_Save_pressed():
 	p.title = title.text
 	p.private_key = private_key.text
 	p.public_key = public_key.text
+	p.preshared_key = preshared_key.text
 	p.endpoint = endpoint.text
 	p.source_ip = source_ip.text
 	p.keep_alive = keepalive.value
