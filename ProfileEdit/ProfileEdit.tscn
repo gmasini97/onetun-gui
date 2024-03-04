@@ -12,114 +12,127 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="L1" type="Label" parent="VBEdit"]
-margin_right = 400.0
+margin_right = 500.0
 margin_bottom = 14.0
 text = "Edit profile"
 
 [node name="GC" type="GridContainer" parent="VBEdit"]
 margin_top = 18.0
-margin_right = 400.0
-margin_bottom = 182.0
+margin_right = 500.0
+margin_bottom = 210.0
 size_flags_horizontal = 3
 columns = 2
 
 [node name="L1" type="Label" parent="VBEdit/GC"]
 margin_top = 5.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 19.0
 text = "Name"
 
 [node name="Name" type="LineEdit" parent="VBEdit/GC"]
-margin_left = 74.0
-margin_right = 400.0
+margin_left = 94.0
+margin_right = 500.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="L2" type="Label" parent="VBEdit/GC"]
 margin_top = 33.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 47.0
 text = "Private key"
 
 [node name="PrivateKey" type="LineEdit" parent="VBEdit/GC"]
-margin_left = 74.0
+margin_left = 94.0
 margin_top = 28.0
-margin_right = 400.0
+margin_right = 500.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 secret = true
 
 [node name="L3" type="Label" parent="VBEdit/GC"]
 margin_top = 61.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 75.0
 text = "Public key"
 
 [node name="PublicKey" type="LineEdit" parent="VBEdit/GC"]
-margin_left = 74.0
+margin_left = 94.0
 margin_top = 56.0
-margin_right = 400.0
+margin_right = 500.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 
-[node name="L4" type="Label" parent="VBEdit/GC"]
+[node name="L7" type="Label" parent="VBEdit/GC"]
 margin_top = 89.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 103.0
-text = "Endpoint"
+text = "Preshared key"
 
-[node name="Endpoint" type="LineEdit" parent="VBEdit/GC"]
-margin_left = 74.0
+[node name="PresharedKey" type="LineEdit" parent="VBEdit/GC"]
+margin_left = 94.0
 margin_top = 84.0
-margin_right = 400.0
+margin_right = 500.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
 
-[node name="L5" type="Label" parent="VBEdit/GC"]
+[node name="L4" type="Label" parent="VBEdit/GC"]
 margin_top = 117.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 131.0
-text = "Source IP"
+text = "Endpoint"
 
-[node name="SourceIP" type="LineEdit" parent="VBEdit/GC"]
-margin_left = 74.0
+[node name="Endpoint" type="LineEdit" parent="VBEdit/GC"]
+margin_left = 94.0
 margin_top = 112.0
-margin_right = 400.0
+margin_right = 500.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
-[node name="L6" type="Label" parent="VBEdit/GC"]
+[node name="L5" type="Label" parent="VBEdit/GC"]
 margin_top = 145.0
-margin_right = 70.0
+margin_right = 90.0
 margin_bottom = 159.0
+text = "Source IP"
+
+[node name="SourceIP" type="LineEdit" parent="VBEdit/GC"]
+margin_left = 94.0
+margin_top = 140.0
+margin_right = 500.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+
+[node name="L6" type="Label" parent="VBEdit/GC"]
+margin_top = 173.0
+margin_right = 90.0
+margin_bottom = 187.0
 text = "Keepalive"
 
 [node name="Keepalive" type="SpinBox" parent="VBEdit/GC"]
-margin_left = 74.0
-margin_top = 140.0
-margin_right = 400.0
-margin_bottom = 164.0
+margin_left = 94.0
+margin_top = 168.0
+margin_right = 500.0
+margin_bottom = 192.0
 min_value = 30.0
 max_value = 90.0
 value = 30.0
 rounded = true
 
 [node name="L2" type="Label" parent="VBEdit"]
-margin_top = 186.0
-margin_right = 400.0
-margin_bottom = 200.0
+margin_top = 214.0
+margin_right = 500.0
+margin_bottom = 228.0
 text = "Forwards"
 
 [node name="Forwards" type="TextEdit" parent="VBEdit"]
-margin_top = 204.0
-margin_right = 400.0
-margin_bottom = 376.0
+margin_top = 232.0
+margin_right = 500.0
+margin_bottom = 476.0
 size_flags_vertical = 3
 
 [node name="HB" type="HBoxContainer" parent="VBEdit"]
-margin_top = 380.0
-margin_right = 400.0
-margin_bottom = 400.0
+margin_top = 480.0
+margin_right = 500.0
+margin_bottom = 500.0
 
 [node name="Save" type="Button" parent="VBEdit/HB"]
 margin_right = 41.0

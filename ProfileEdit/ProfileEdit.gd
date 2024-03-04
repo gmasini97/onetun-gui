@@ -6,6 +6,7 @@ signal on_cancel()
 var title: LineEdit
 var private_key: LineEdit
 var public_key: LineEdit
+var preshared_key: LineEdit
 var endpoint: LineEdit
 var source_ip: LineEdit
 var keepalive: SpinBox
@@ -15,6 +16,7 @@ func _ready():
 	title = $VBEdit/GC/Name
 	private_key = $VBEdit/GC/PrivateKey
 	public_key = $VBEdit/GC/PublicKey
+	preshared_key = $VBEdit/GC/PresharedKey
 	endpoint = $VBEdit/GC/Endpoint
 	source_ip = $VBEdit/GC/SourceIP
 	keepalive = $VBEdit/GC/Keepalive
@@ -24,6 +26,7 @@ func set_profile(profile: Profile_T):
 	title.text = profile.title
 	private_key.text = profile.private_key
 	public_key.text = profile.public_key
+	preshared_key.text = profile.preshared_key
 	endpoint.text = profile.endpoint
 	source_ip.text = profile.source_ip
 	keepalive.value = profile.keep_alive
